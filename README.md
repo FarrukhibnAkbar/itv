@@ -7,10 +7,12 @@
 
 2. Xizmatlarni ishga tushirish:
    - `Makefile` yordamida xizmatlarni ishga tushirish uchun quyidagi buyruqlarni terminalda bajaring:
-   ```bash
-    make api_gateway
-    make movie_service
-   ```
+    ```bash
+     make api_gateway
+    ```
+    ```bash
+     make movie_service
+    ```
 
 3. Loglarni kuzatish:
    - Loyihada loglarni kuzatish uchun maxsus yordamchi funksiya mavjud. Bu funksiya loglarni Telegram kanaliga yuboradi, bu esa tizimdagi xatoliklarni yoki muhim ma'lumotlarni kuzatishni osonlashtiradi.
@@ -26,6 +28,8 @@
    - Use the `Makefile` to start the services by running the following commands in the terminal:
     ```bash
      make api_gateway
+    ```
+    ```bash
      make movie_service
     ```
 
