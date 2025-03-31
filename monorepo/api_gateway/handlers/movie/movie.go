@@ -44,7 +44,7 @@ func New(logger log.Factory) MovieHandler {
 // @Accept       json
 // @Produce      json
 // @Param        movie  body      entity.Movie  true  "Movie"
-// @Success      201  {object}  utils.ResponseForExec
+// @Success      200  {object}  utils.Response{data=utils.ResponseForExec}  "OK"  example:{"data": {"info": "Movie created successfully", "id": "123e4567-e89b-12d3-a456-426614174000"}}
 // @Failure      400  {object}  utils.Response
 // @Failure      500  {object}  utils.Response
 // @Router       /v1/new/movie [post]
@@ -97,7 +97,7 @@ func (b *movieHandler) CreateMovie(w http.ResponseWriter, r *http.Request) {
 // @Produce      json
 // @Param        page  query      int false  "Page"
 // @Param        limit  query      int false "Limit"
-// @Success      200  {object}  entity.MovieList
+// @Success      200  {object}  utils.Response{data=entity.MovieList}  "OK"  example:{"data": {"movies": [{"id": "123e4567-e89b-12d3-a456-426614174000", "title": "Inception", "description": "A mind-bending thriller", "year": 2010, "plot": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.", "director": "Christopher Nolan"}], "count": 1}}
 // @Failure      400  {object}  utils.Response
 // @Failure      500  {object}  utils.Response
 // @Router       /v1/movies [get]
@@ -156,7 +156,7 @@ func (b *movieHandler) GetMovies(w http.ResponseWriter, r *http.Request) {
 // @Accept       json
 // @Produce      json
 // @Param        id  path      string  true  "Movie ID"
-// @Success      200  {object}  entity.Movie
+// @Success      200  {object}  utils.Response{data=entity.Movie}  "OK"  example:{"data": {"id": "123e4567-e89b-12d3-a456-426614174000", "title": "Inception", "description": "A mind-bending thriller", "year": 2010, "plot": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.", "director": "Christopher Nolan"}}sk of planting an idea into the mind of a CEO.", "director": "Christopher Nolan"}
 // @Failure      400  {object}  utils.Response
 // @Failure      500  {object}  utils.Response
 // @Router       /v1/movie/{id} [get]
@@ -201,8 +201,8 @@ func (b *movieHandler) GetMovieByID(w http.ResponseWriter, r *http.Request) {
 // @Tags         movie
 // @Accept       json
 // @Produce      json
-// @Param        id  path      string  true  "Movie ID"
-// @Success      200  {object}  utils.ResponseForExec
+// @Param        id  path  string  true  "Movie ID"  example(123e4567-e89b-12d3-a456-426614174000)
+// @Success      200  {object}  utils.Response{data=utils.ResponseForExec}  "OK"  example:{"data": {"info": "Movie deleted successfully", "id": "123e4567-e89b-12d3-a456-426614174000"}}
 // @Failure      400  {object}  utils.Response
 // @Failure      500  {object}  utils.Response
 // @Router       /v1/movie/{id} [delete]
@@ -245,7 +245,7 @@ func (b *movieHandler) DeleteMovie(w http.ResponseWriter, r *http.Request) {
 // @Accept       json
 // @Produce      json
 // @Param        movie  body      entity.Movie  true  "Movie"
-// @Success      200  {object}  utils.Response
+// @Success      200  {object}  utils.Response{data=utils.ResponseForExec}  "OK"  example:{"data": {"info": "Movie updated successfully", "id": "123e4567-e89b-12d3-a456-426614174000"}}
 // @Failure      400  {object}  utils.Response
 // @Failure      500  {object}  utils.Response
 // @Router       /v1/movie [put]

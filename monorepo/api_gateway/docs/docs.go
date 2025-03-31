@@ -58,9 +58,21 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "OK\"  example:{\"data\": {\"info\": \"Movie updated successfully\", \"id\": \"123e4567-e89b-12d3-a456-426614174000\"}}",
                         "schema": {
-                            "$ref": "#/definitions/utils.Response"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/utils.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/utils.ResponseForExec"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     "400": {
@@ -102,9 +114,21 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "OK\"  example:{\"data\": {\"id\": \"123e4567-e89b-12d3-a456-426614174000\", \"title\": \"Inception\", \"description\": \"A mind-bending thriller\", \"year\": 2010, \"plot\": \"A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.\", \"director\": \"Christopher Nolan\"}}sk of planting an idea into the mind of a CEO.\", \"director\": \"Christopher Nolan\"}",
                         "schema": {
-                            "$ref": "#/definitions/entity.Movie"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/utils.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/entity.Movie"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     "400": {
@@ -144,6 +168,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
+                        "example": "123e4567-e89b-12d3-a456-426614174000",
                         "description": "Movie ID",
                         "name": "id",
                         "in": "path",
@@ -152,9 +177,21 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "OK\"  example:{\"data\": {\"info\": \"Movie deleted successfully\", \"id\": \"123e4567-e89b-12d3-a456-426614174000\"}}",
                         "schema": {
-                            "$ref": "#/definitions/utils.ResponseForExec"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/utils.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/utils.ResponseForExec"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     "400": {
@@ -201,9 +238,21 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "OK\"  example:{\"data\": {\"movies\": [{\"id\": \"123e4567-e89b-12d3-a456-426614174000\", \"title\": \"Inception\", \"description\": \"A mind-bending thriller\", \"year\": 2010, \"plot\": \"A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.\", \"director\": \"Christopher Nolan\"}], \"count\": 1}}",
                         "schema": {
-                            "$ref": "#/definitions/entity.MovieList"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/utils.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/entity.MovieList"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     "400": {
@@ -254,10 +303,22 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "201": {
-                        "description": "Created",
+                    "200": {
+                        "description": "OK\"  example:{\"data\": {\"info\": \"Movie created successfully\", \"id\": \"123e4567-e89b-12d3-a456-426614174000\"}}",
                         "schema": {
-                            "$ref": "#/definitions/utils.ResponseForExec"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/utils.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/utils.ResponseForExec"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     "400": {

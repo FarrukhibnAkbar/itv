@@ -74,9 +74,15 @@ paths:
       - application/json
       responses:
         "200":
-          description: OK
+          description: 'OK"  example:{"data": {"info": "Movie updated successfully",
+            "id": "123e4567-e89b-12d3-a456-426614174000"}}'
           schema:
-            $ref: '#/definitions/utils.Response'
+            allOf:
+            - $ref: '#/definitions/utils.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/utils.ResponseForExec'
+              type: object
         "400":
           description: Bad Request
           schema:
@@ -98,6 +104,7 @@ paths:
       description: Delete movie
       parameters:
       - description: Movie ID
+        example: 123e4567-e89b-12d3-a456-426614174000
         in: path
         name: id
         required: true
@@ -106,9 +113,15 @@ paths:
       - application/json
       responses:
         "200":
-          description: OK
+          description: 'OK"  example:{"data": {"info": "Movie deleted successfully",
+            "id": "123e4567-e89b-12d3-a456-426614174000"}}'
           schema:
-            $ref: '#/definitions/utils.ResponseForExec'
+            allOf:
+            - $ref: '#/definitions/utils.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/utils.ResponseForExec'
+              type: object
         "400":
           description: Bad Request
           schema:
@@ -137,9 +150,19 @@ paths:
       - application/json
       responses:
         "200":
-          description: OK
+          description: 'OK"  example:{"data": {"id": "123e4567-e89b-12d3-a456-426614174000",
+            "title": "Inception", "description": "A mind-bending thriller", "year":
+            2010, "plot": "A thief who steals corporate secrets through the use of
+            dream-sharing technology is given the inverse task of planting an idea
+            into the mind of a CEO.", "director": "Christopher Nolan"}}sk of planting
+            an idea into the mind of a CEO.", "director": "Christopher Nolan"}'
           schema:
-            $ref: '#/definitions/entity.Movie'
+            allOf:
+            - $ref: '#/definitions/utils.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/entity.Movie'
+              type: object
         "400":
           description: Bad Request
           schema:
@@ -169,9 +192,19 @@ paths:
       - application/json
       responses:
         "200":
-          description: OK
+          description: 'OK"  example:{"data": {"movies": [{"id": "123e4567-e89b-12d3-a456-426614174000",
+            "title": "Inception", "description": "A mind-bending thriller", "year":
+            2010, "plot": "A thief who steals corporate secrets through the use of
+            dream-sharing technology is given the inverse task of planting an idea
+            into the mind of a CEO.", "director": "Christopher Nolan"}], "count":
+            1}}'
           schema:
-            $ref: '#/definitions/entity.MovieList'
+            allOf:
+            - $ref: '#/definitions/utils.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/entity.MovieList'
+              type: object
         "400":
           description: Bad Request
           schema:
@@ -198,10 +231,16 @@ paths:
       produces:
       - application/json
       responses:
-        "201":
-          description: Created
+        "200":
+          description: 'OK"  example:{"data": {"info": "Movie created successfully",
+            "id": "123e4567-e89b-12d3-a456-426614174000"}}'
           schema:
-            $ref: '#/definitions/utils.ResponseForExec'
+            allOf:
+            - $ref: '#/definitions/utils.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/utils.ResponseForExec'
+              type: object
         "400":
           description: Bad Request
           schema:
