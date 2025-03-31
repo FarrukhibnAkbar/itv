@@ -1,5 +1,39 @@
 # ITV
 
+## Loyihani ishga tushirish bo'yicha qo'llanma (O'zbek tilida)
+
+1. Har bir xizmat uchun `.env` faylini yarating:
+   - `api_gateway` va `movie_service` xizmatlari uchun kerakli konfiguratsiyalarni `.env` faylida ko'rsating. Bu faylda ma'lumotlar bazasi, portlar va boshqa muhim sozlamalar bo'lishi kerak.
+
+2. Xizmatlarni ishga tushirish:
+   - `Makefile` yordamida xizmatlarni ishga tushirish uchun quyidagi buyruqlarni terminalda bajaring:
+   ```bash
+    make api_gateway
+    make movie_service
+   ```
+
+3. Loglarni kuzatish:
+   - Loyihada loglarni kuzatish uchun maxsus yordamchi funksiya mavjud. Bu funksiya loglarni Telegram kanaliga yuboradi, bu esa tizimdagi xatoliklarni yoki muhim ma'lumotlarni kuzatishni osonlashtiradi.
+
+---
+
+## Project Setup Guide (In English)
+
+1. Create a `.env` file for each service:
+   - Provide the necessary configurations in the `.env` file for `api_gateway` and `movie_service`. This file should include database credentials, ports, and other essential settings.
+
+2. Start the services:
+   - Use the `Makefile` to start the services by running the following commands in the terminal:
+    ```bash
+     make api_gateway
+     make movie_service
+    ```
+
+3. Monitor logs:
+   - The project includes a helper function to monitor logs. This function sends logs to a Telegram channel, making it easier to track errors or important events in the system.
+
+---
+
 ## Loyihaning tavsifi (O'zbek tilida)
 
 Ushbu loyiha **monorepo arxitekturasi** asosida ishlab chiqilgan bo'lib, bir nechta xizmatlarni bitta repozitoriyada boshqarish imkonini beradi. Loyihaning asosiy maqsadi **Web3** texnologiyalari bilan ishlaydigan, **gRPC** orqali xizmatlararo muloqotni ta'minlaydigan, zamonaviy va kengaytiriladigan tizim yaratishdir.
