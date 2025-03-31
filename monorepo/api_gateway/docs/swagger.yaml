@@ -1,0 +1,219 @@
+basePath: /api
+definitions:
+  entity.Movie:
+    properties:
+      description:
+        type: string
+      director:
+        type: string
+      id:
+        type: string
+      plot:
+        type: string
+      title:
+        type: string
+      year:
+        type: integer
+    type: object
+  entity.MovieList:
+    properties:
+      count:
+        type: integer
+      movies:
+        items:
+          $ref: '#/definitions/entity.Movie'
+        type: array
+    type: object
+  utils.Response:
+    properties:
+      data: {}
+      error:
+        type: boolean
+      message: {}
+      path:
+        type: string
+      status:
+        type: integer
+      timestamp:
+        type: string
+    type: object
+  utils.ResponseForExec:
+    properties:
+      id:
+        type: string
+      info:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is the API documentation for the Movie Service.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Movie API
+  version: "1.0"
+paths:
+  /v1/movie:
+    put:
+      consumes:
+      - application/json
+      description: Update movie
+      parameters:
+      - description: Movie
+        in: body
+        name: movie
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Movie'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Response'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Update movie
+      tags:
+      - movie
+  /v1/movie/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete movie
+      parameters:
+      - description: Movie ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.ResponseForExec'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Response'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Delete movie
+      tags:
+      - movie
+    get:
+      consumes:
+      - application/json
+      description: Get movie by id
+      parameters:
+      - description: Movie ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Movie'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: Get movie by id
+      tags:
+      - movie
+  /v1/movies:
+    get:
+      consumes:
+      - application/json
+      description: Get movies
+      parameters:
+      - description: Page
+        in: query
+        name: page
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.MovieList'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: Get movies
+      tags:
+      - movie
+  /v1/new/movie:
+    post:
+      consumes:
+      - application/json
+      description: Create movie
+      parameters:
+      - description: Movie
+        in: body
+        name: movie
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Movie'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/utils.ResponseForExec'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Response'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Create movie
+      tags:
+      - movie
+swagger: "2.0"

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package movie_service;
+
+option go_package = ".;movie_service";
+
+service MovieService {
+  rpc CreateMovie (Movie) returns (Empty);
+  rpc GetMovies (Pagination) returns (MovieList);
+  rpc GetMovie (MovieId) returns (Movie);
+  rpc UpdateMovie (Movie) returns (Empty);
+  rpc DeleteMovie (MovieId) returns (Empty);
+}
+message Empty {}
+
+message Pagination {
+  int32 page = 1;
+  int32 limit = 2;
+}
+
+message MovieId {
+  string id = 1;
+}
+
+message Movie {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  string director = 4;
+  int32 year = 5;
+  string plot = 6;
+}
+
+message MovieList {
+  repeated Movie movies = 1;
+  int32 count = 2;
+}
